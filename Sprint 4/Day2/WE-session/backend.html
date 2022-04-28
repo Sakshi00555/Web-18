@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Backend</title>
+    <style>
+      #form{
+        display: grid;
+        margin: auto;
+        width: 40%;
+        height: 400px;
+      }
+      #submit{
+        width: 30%;
+        margin: auto;
+        border-radius: 10px;
+        height: 50px;
+        background-color: red;
+
+      }
+      body{
+        background-color: rgb(143, 207, 186);
+      }
+    </style>
+</head>
+<body>
+    <form id="form">
+        <input id="image" type="text" placeholder="Enter Image URL">
+        <input  id="name" type="text" placeholder="Enter Name">
+        <input  id="position" type="text" placeholder="Enter Position">
+        <input  id="logo" type="text" placeholder="Enter Company Logo URL">
+        <input  id="submit" type="submit">
+    </form>
+</body>
+</html>
+<script>
+    document.querySelector("#form").addEventListener("submit",onClicks)
+    var arr = (JSON.parse(localStorage.getItem("data"))||[])
+    function onClicks(){
+        event.preventDefault()
+        var obj ={ image:form.image.value,
+            name: form.name.value,
+            position:form.position.value ,
+            logo :form.logo.value ,
+
+        }
+        arr.push(obj)
+console.log(arr)
+localStorage.setItem("data",JSON.stringify(arr))
+    }
+</script>

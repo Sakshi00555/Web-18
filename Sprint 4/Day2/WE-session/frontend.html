@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FrontEnd</title>
+    <style>
+        
+        #container {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(1, auto);
+        width: 80%;
+        gap: 20px;
+        margin: auto;
+        justify-content: center;
+        /* border: 1px solid red; */
+        text-align: center;
+        
+        
+       
+        
+      }
+      p + img {
+        height: 50px;
+        width: 50%;
+        
+       
+      }
+      img{
+        width: 100%;
+        border-top-right-radius: 9px;
+        border-top-left-radius: 9px;
+      }
+      p,h3{
+        font-family: 'Anton', sans-serif;
+      }
+     
+      
+      div>div{
+        border-radius: 9px;
+        
+        
+        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+      }
+      h1{
+        text-align: center;
+        
+        font-family: 'Anton', sans-serif;
+        font-size: 42px;
+      }
+    </style>
+</head>
+<body>
+    <h1>Strategic Investors</h1>
+    <div id="container">
+  
+    </div>
+</body>
+</html>
+<script>
+    var data = JSON.parse(localStorage.getItem("data"))
+    console.log(data)
+    data.forEach(function(ele){
+       var box = document.createElement("div")
+       var pic = document.createElement("img")
+       pic.setAttribute("src",ele.image)
+       var name = document.createElement("h3")
+       name.innerText = ele.name
+       var position = document.createElement("p")
+       position.innerText = ele.position
+       var logo = document.createElement("img")
+       logo.setAttribute("src",ele.logo)
+       box.append(pic,name,position,logo)
+       document.querySelector("#container").append(box)
+   })
+</script>
